@@ -9,6 +9,12 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::get('register', [RegisterController::class, 'show'])->name('register');
+Route::get('register', [RegisterController::class, 'create'])->name('register');
+Route::post('register', [RegisterController::class, 'store'])->name('user.store');
+
+Route::get('verification', function(){
+    return view ('verification.notice');
+})->name('verification.send');
+
 Route::get('login', [LoginController::class, 'show'])->name('login');
 
