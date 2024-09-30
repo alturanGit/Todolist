@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Подтверждение электронной почты') }}</div>
+                <div class="card-header text-center">{{ __('Подтверждение электронной почты') }}</div>
 
-                <div class="card-body">
+                <div class="card-body text-center">
                     {{ __('Спасибо за регистрацию! Пожалуйста, подтвердите свою электронную почту, прежде чем продолжить.') }}
 
                     @if (session('status'))
@@ -18,7 +18,7 @@
 
                     {{ __('Если вы не получили письмо с подтверждением, вы можете запросить его повторную отправку.') }}
 
-                    <form method="POST" action="{{ route('verification.send') }}">
+                    <form method="POST" action="#">
                         @csrf
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary">
@@ -28,11 +28,11 @@
                     </form>
 
                     <div class="mt-4">
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('Выйти') }}
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form" action="#" method="POST" style="display: none;">
                             @csrf
                         </form>
                     </div>
@@ -42,3 +42,4 @@
     </div>
 </div>
 @endsection
+
