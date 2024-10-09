@@ -67,16 +67,16 @@
         </form>
         <h3>Ваши задачи:</h3>
         <ul class="list-group">
-            @foreach ($task as $tasks)
+            {{-- @foreach ($task as $tasks) --}}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{-- $task->name --}}
+                    {{-- $task->name  --}}
                     <form method="POST" action="#" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
                     </form>
                 </li>
-           @endforeach 
+           {{-- @endforeach  --}}
         </ul>
     </div>
 @endsection

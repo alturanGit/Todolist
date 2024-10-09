@@ -18,7 +18,7 @@
 
                     {{ __('Если вы не получили письмо с подтверждением, вы можете запросить его повторную отправку.') }}
 
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{ route('verification.send') }}">
                         @csrf
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary">
@@ -28,7 +28,7 @@
                     </form>
 
                     <div class="mt-4">
-                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a href="{{ route('home') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('Выйти') }}
                         </a>
 

@@ -29,9 +29,4 @@ class LoginController extends Controller
             'email' => 'Неверный логин или пароль'
         ]);
     }
-    
-    public function dashboard() 
-    {
-        return view('todo');
-    }
 }
