@@ -22,11 +22,17 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended('todo');
         };
 
         return back()->withErrors([
             'email' => 'Неверный логин или пароль'
         ]);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
     }
 }

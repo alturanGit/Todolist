@@ -17,12 +17,21 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">Вход</a>
-          </li>
+          @auth
+            <li class="nav-item">
+              <form action="{{ route('logout') }}" method="POST" id="logout-form">
+                @csrf
+                <button type="submit" class="nav-link btn btn-link" style="color: white;">Выход</button>
+              </form>
+            </li>
+          @else
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('login') }}">Вход</a>
+            </li>
+          @endauth
         </ul>
       </div>
     </div>
