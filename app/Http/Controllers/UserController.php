@@ -8,6 +8,6 @@ class UserController extends Controller
 {
     public function dashboard() 
     {
-        return view('todo');
+        return view('dashboard');
     }
 }
