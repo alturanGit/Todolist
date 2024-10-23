@@ -13,21 +13,27 @@ class LoginController extends Controller
         return view('Auth.login');
     }
 
+    public function showTodo()
+    {
+        return view('todo');
+    }
+
     public function loginAuth(Request $request)
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
-            'password' => ['required']
+            'password' => ['required'],
         ]);
 
-        if(Auth::attempt($credentials, $request->boolean('remember'))) {
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended('todo');
+            return redirect()->route('todo');
         };
 
         return back()->withErrors([
-            'email' => 'Неверный логин или пароль'
-        ]);
+            'email' => 'Неверный логин или пароль.',
+            'password' => 'Неверный логин или пароль.'
+        ])->onlyInput('email');
     }
 
     public function logout()

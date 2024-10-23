@@ -19,12 +19,16 @@ class RegisterController extends Controller
     {
         $request->validate([
             'name' => ['required', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:users'], 
+            'email' => ['required', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed'],
         ]);
 
-        $user = User::create($request->all());
-        event(new Registered($user));
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+
         Auth::login($user);
 
         return redirect()->route('verification.notice');
